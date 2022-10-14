@@ -82,6 +82,6 @@ public class Main {
                 minComedyRanking = films[i];
                 }
             }
-        System.out.println(minComedyRanking.getDirector());
+        System.out.println("Đạo diễn của phim thể loại Comedy có ranking thấp nhất là: " +minComedyRanking.getDirector());
         }
     }
