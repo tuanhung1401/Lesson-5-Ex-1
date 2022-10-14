@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -63,20 +64,24 @@ public class Main {
         System.out.println("Xin mời bạn nhập từ khóa: ");
         Scanner sc = new Scanner(System.in);
         String keyWord = sc.nextLine();
-        for (int i = 0; i < 5; i++) {
-            if (films[i].getTitle().contains(keyWord)){
+        for (int i = 0; i < 6; i++) {
+            if (films[i].getTitle().contains(keyWord)) {
                 System.out.println("Phim mà bạn đang tìm kiếm là: " + films[i]);
             }
         }
-        double max;
-        for (int i= 0; i < 5; i++){
-            max =films[i].getRanking();
-            for (i=0; i < 5; i++) {
-                if (films[i].getRanking() >max){
-                    max = films[i].getRanking();
+        Film minRankingFilm = films[0];
+        for (int i = 1; i < 6; i++) {
+            if (minRankingFilm.getRanking() < films[i].getRanking()) {
+                minRankingFilm = films[i];
+            }
+        }
+        System.out.println("Phim có ranking thấp nhất là: " + minRankingFilm);
+        Film minComedyRanking = films[0];
+        for (int i = 0; i < 6; i++) {
+            if (films[i].getGenre() == Genre.COMEDY && minComedyRanking.getRanking() < films[i].getRanking()) {
+                minComedyRanking = films[i];
                 }
             }
-            System.out.println("Phim có ranking thấp nhất là: " +films[i]);
+        System.out.println(minComedyRanking.getDirector());
         }
     }
-}
